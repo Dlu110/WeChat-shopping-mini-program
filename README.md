@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <a href="https://tdesign.tencent.com/" target="_blank">
     <img alt="TDesign Logo" width="200" src="https://tdesign.gtimg.com/site/TDesign.png">
@@ -125,3 +126,7 @@ TDesign 团队会及时在企业微信大群中同步发布版本、问题修复
 ## :page_with_curl: 开源协议
 
 TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-miniprogram-starter-retail/LICENSE)。
+=======
+# WeChat-shopping-mini-program
+微信购物小程序
+>>>>>>> db3330d80a3270bcb8b9f1f3de7c6ca26d55568f
