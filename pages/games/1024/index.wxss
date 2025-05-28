@@ -1,0 +1,124 @@
+.game-container {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #faf8ef;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.scores {
+  display: flex;
+  gap: 20rpx;
+}
+
+.score-box {
+  background-color: #bbada0;
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  min-width: 120rpx;
+}
+
+.score-label {
+  color: #eee4da;
+  font-size: 24rpx;
+  display: block;
+}
+
+.score-value {
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.restart-btn {
+  background-color: #8f7a66;
+  color: white;
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 8rpx;
+  border: none;
+}
+
+.board {
+  width: 600rpx;
+  height: 600rpx;
+  background-color: #bbada0;
+  border-radius: 8rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  position: relative;
+}
+
+.grid-row {
+  display: flex;
+  flex: 1;
+  gap: 10rpx;
+}
+
+.grid-cell {
+  flex: 1;
+  background-color: rgba(238, 228, 218, 0.35);
+  border-radius: 4rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #776e65;
+}
+
+/* 数字颜色样式 */
+.cell-2 { background-color: #eee4da; }
+.cell-4 { background-color: #ede0c8; }
+.cell-8 { background-color: #f2b179; color: #f9f6f2; }
+.cell-16 { background-color: #f59563; color: #f9f6f2; }
+.cell-32 { background-color: #f67c5f; color: #f9f6f2; }
+.cell-64 { background-color: #f65e3b; color: #f9f6f2; }
+.cell-128 { background-color: #edcf72; color: #f9f6f2; font-size: 36rpx; }
+.cell-256 { background-color: #edcc61; color: #f9f6f2; font-size: 36rpx; }
+.cell-512 { background-color: #edc850; color: #f9f6f2; font-size: 36rpx; }
+.cell-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 32rpx; }
+.cell-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 32rpx; }
+
+.game-over, .game-win {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(238, 228, 218, 0.73);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8rpx;
+}
+
+.game-over-content, .game-win-content {
+  text-align: center;
+}
+
+.game-over-text, .game-win-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #776e65;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.game-over-score, .game-win-score {
+  font-size: 32rpx;
+  color: #776e65;
+  display: block;
+} 

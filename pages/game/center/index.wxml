@@ -1,0 +1,24 @@
+<view class="game-center">
+  <view class="header">
+    <text class="title">第十大道游戏中心</text>
+    <text class="subtitle">精选游戏，等你来玩</text>
+  </view>
+  
+  <view class="game-grid">
+    <view class="game-item {{item.status === 'coming' ? 'coming-soon' : ''}}" 
+          wx:for="{{games}}" 
+          wx:key="id"
+          data-game-id="{{item.id}}"
+          data-status="{{item.status}}"
+          bindtap="onGameClick">
+      <image class="game-icon" src="{{item.icon}}" mode="aspectFit"/>
+      <view class="game-info">
+        <text class="game-name">{{item.name}}</text>
+        <text class="game-description">{{item.description}}</text>
+        <view class="game-status" wx:if="{{item.status === 'coming'}}">
+          <text class="coming-soon-text">即将上线</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

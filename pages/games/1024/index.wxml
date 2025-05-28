@@ -1,0 +1,44 @@
+<view class="game-container">
+  <view class="header">
+    <view class="scores">
+      <view class="score-box">
+        <text class="score-label">分数</text>
+        <text class="score-value">{{score}}</text>
+      </view>
+      <view class="score-box">
+        <text class="score-label">最高分</text>
+        <text class="score-value">{{bestScore}}</text>
+      </view>
+    </view>
+    <button class="restart-btn" bindtap="onRestart">重新开始</button>
+  </view>
+
+  <view class="board" 
+        bindtouchstart="onTouchStart" 
+        bindtouchend="onTouchEnd">
+    <view class="grid-row" wx:for="{{board}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowIndex">
+      <view class="grid-cell cell-{{item}}" 
+            wx:for="{{row}}" 
+            wx:for-item="cell" 
+            wx:for-index="colIndex" 
+            wx:key="colIndex">
+        <text wx:if="{{cell !== 0}}">{{cell}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="game-over" wx:if="{{isGameOver}}">
+    <view class="game-over-content">
+      <text class="game-over-text">游戏结束</text>
+      <text class="game-over-score">得分：{{score}}</text>
+    </view>
+  </view>
+
+  <view class="game-win" wx:if="{{isWin}}">
+    <view class="game-win-content">
+      <text class="game-win-text">恭喜！</text>
+      <text class="game-win-score">得分：{{score}}</text>
+    </view>
+  </view>
+</view> 
+ 

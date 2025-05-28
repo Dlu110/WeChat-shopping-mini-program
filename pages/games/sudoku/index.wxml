@@ -1,0 +1,83 @@
+<view class="sudoku-container">
+  <view class="header">
+    <view class="timer">{{formatTime(timer)}}</view>
+    <view class="controls">
+      <picker bindchange="onDifficultyChange" value="{{difficulty}}" range="{{difficultyOptions}}" range-key="label">
+        <view class="difficulty-picker">
+          {{difficultyOptions[difficulty].label}}
+        </view>
+      </picker>
+      <view class="control-btn" bindtap="togglePause">
+        {{isPaused ? '继续' : '暂停'}}
+      </view>
+      <view class="control-btn" bindtap="initGame">重新开始</view>
+    </view>
+  </view>
+
+  <view class="game-info">
+    <view class="info-item">
+      <text>得分：{{score}}</text>
+    </view>
+    <view class="info-item">
+      <text>提示：{{hints}}</text>
+      <view class="hint-btn" bindtap="useHint">使用提示</view>
+    </view>
+    <view class="info-item">
+      <text>错误：{{mistakes}}/{{maxMistakes}}</text>
+    </view>
+  </view>
+
+  <view class="board">
+    <block wx:for="{{board}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowIndex">
+      <view class="grid-row">
+        <block wx:for="{{row}}" wx:for-item="cell" wx:for-index="colIndex" wx:key="colIndex">
+          <view 
+            class="grid-cell {{selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}} {{initialBoard[rowIndex][colIndex] !== 0 ? 'initial' : ''}} {{(rowIndex + 1) % 3 === 0 ? 'border-bottom' : ''}} {{(colIndex + 1) % 3 === 0 ? 'border-right' : ''}}"
+            data-row="{{rowIndex}}"
+            data-col="{{colIndex}}"
+            bindtap="onCellClick"
+          >
+            {{cell !== 0 ? cell : ''}}
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <view class="number-pad">
+    <block wx:for="{{9}}" wx:key="*this">
+      <view class="number-btn" bindtap="onNumberInput" data-number="{{index + 1}}">
+        {{index + 1}}
+      </view>
+    </block>
+    <view class="number-btn clear" bindtap="onNumberInput" data-number="0">
+      清除
+    </view>
+  </view>
+
+  <view class="pause-overlay" wx:if="{{isPaused}}">
+    <view class="pause-content">
+      <view class="pause-title">游戏暂停</view>
+      <view class="pause-info">
+        <text>用时：{{formatTime(timer)}}</text>
+        <text>得分：{{score}}</text>
+        <text>提示：{{hints}}</text>
+        <text>错误：{{mistakes}}/{{maxMistakes}}</text>
+      </view>
+      <view class="pause-btn" bindtap="togglePause">继续游戏</view>
+    </view>
+  </view>
+
+  <view class="game-overlay" wx:if="{{gameOver || gameWon}}">
+    <view class="game-over-content">
+      <view class="game-over-title">{{gameWon ? '恭喜获胜！' : '游戏结束'}}</view>
+      <view class="game-over-info">
+        <text>用时：{{formatTime(timer)}}</text>
+        <text>得分：{{score}}</text>
+        <text wx:if="{{gameWon}}">完美通关！</text>
+        <text wx:else>错误次数已达上限</text>
+      </view>
+      <view class="game-over-btn" bindtap="initGame">重新开始</view>
+    </view>
+  </view>
+</view> 
